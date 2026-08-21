@@ -1,20 +1,31 @@
 {
   "name": "exercise",
   "version": "1.0.0",
-  "description": "Express 5 + Zod 4 + TypeScript CRUD API",
+  "description": "Express 5 + Zod 4 + TypeScript + Prisma + PostgreSQL",
   "main": "dist/index.js",
   "scripts": {
-    "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+    "dev": "ts-node-dev --respawn --transpile-only -r dotenv/config src/index.ts",
     "build": "tsc",
-    "start": "node dist/index.js"
+    "start": "node dist/index.js",
+    "seed": "ts-node -r dotenv/config prisma/seed.ts",
+    "arch": "depcruise src --config .dependency-cruiser.cjs",
+    "load-test": "node scripts/20-parallel-requests.js"
   },
   "dependencies": {
+    "@prisma/adapter-pg": "^7.9.1",
+    "@prisma/client": "^6.0.0",
+    "dotenv": "^16.0.0",
     "express": "^5.0.0",
+    "pg": "^8.23.0",
+    "prisma": "^6.0.0",
     "zod": "^4.0.0"
   },
   "devDependencies": {
     "@types/express": "^5.0.0",
     "@types/node": "^22.0.0",
+    "@types/pg": "^8.23.1",
+    "dependency-cruiser": "^16.0.0",
+    "ts-node": "^10.0.0",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.0.0"
   }
