@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { venueService } from '../services/venue.service';
+import { VenueQueryDTO } from '../types/venue';
 
 export const venueController = {
   // Express 5 automatically handles async errors, no need for try/catch and next
@@ -9,8 +10,8 @@ export const venueController = {
   },
 
   async listVenues(req: Request, res: Response) {
-    // limit is coerced to number by Zod schema, cast safely
-    const limit = req.query.limit ? Number(req.query.limit) : undefined;
+    // Read the parsed query from res.locals.query (set by validateQuery middleware)
+    const { limit } = res.locals['query'] as VenueQueryDTO;
     const venues = await venueService.listVenues(limit);
     res.status(200).json(venues);
   },
@@ -31,5 +32,5 @@ export const venueController = {
     const id = String(req.params['id']);
     await venueService.deleteVenue(id);
     res.status(204).send();
-  }
+  },
 };
