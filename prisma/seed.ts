@@ -5,9 +5,7 @@
  * Uses upsert everywhere: if the row already exists it is updated in-place.
  */
 import 'dotenv/config';
-import { PrismaClient } from '../src/generated/prisma';
-
-const prisma = new PrismaClient();
+import prisma from '../src/lib/prisma';
 
 async function main() {
   console.log('🌱  Seeding database...');
