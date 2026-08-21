@@ -9,51 +9,51 @@
 - [x] Create Session 2 branch (`session-2`)
 
 ## Task 1 — In-memory /v1/bookings
-- [ ] Define Event & Booking domain types in `src/types/event.ts` and `src/types/booking.ts`
-- [ ] Implement in-memory booking storage
-- [ ] Implement booking service
-  - [ ] Add unknown event validation (404)
-  - [ ] Add duplicate userId + eventId validation (409, any status)
-  - [ ] Add capacity validation using CONFIRMED bookings only (409)
-  - [ ] Keep cancelled booking records (soft delete only)
-- [ ] Add `POST /v1/bookings`
-  - [ ] Validate booking body with `z.strictObject`
-  - [ ] Reject unknown booking body keys with 400
-  - [ ] Use hard-coded current user in the controller
-  - [ ] Return 201 with CONFIRMED booking
-- [ ] Add `GET /v1/bookings/:id` — 200 or 404
-- [ ] Add `DELETE /v1/bookings/:id` — soft cancel, 200 with CANCELLED booking
+- [x] Define Event & Booking domain types in `src/types/event.ts` and `src/types/booking.ts`
+- [x] Implement in-memory booking storage
+- [x] Implement booking service
+  - [x] Add unknown event validation (404)
+  - [x] Add duplicate userId + eventId validation (409, any status)
+  - [x] Add capacity validation using CONFIRMED bookings only (409)
+  - [x] Keep cancelled booking records (soft delete only)
+- [x] Add `POST /v1/bookings`
+  - [x] Validate booking body with `z.strictObject`
+  - [x] Reject unknown booking body keys with 400
+  - [x] Use hard-coded current user in the controller
+  - [x] Return 201 with CONFIRMED booking
+- [x] Add `GET /v1/bookings/:id` — 200 or 404
+- [x] Add `DELETE /v1/bookings/:id` — soft cancel, 200 with CANCELLED booking
 
 ## Task 2 — Pagination for GET /v1/events
-- [ ] Define Event domain type in `src/types/event.ts`
-- [ ] Define Zod query schema for events (page, limit, venue, from, to)
-- [ ] Apply `validateQuery` on `GET /v1/events`
-- [ ] Read parsed query values from `res.locals.query`
-- [ ] Return `{ data, page, limit, total }` envelope
-- [ ] Empty pages return 200 with `data: []`
+- [x] Define Event domain type in `src/types/event.ts`
+- [x] Define Zod query schema for events (page, limit, venue, from, to)
+- [x] Apply `validateQuery` on `GET /v1/events`
+- [x] Read parsed query values from `res.locals.query`
+- [x] Return `{ data, page, limit, total }` envelope
+- [x] Empty pages return 200 with `data: []`
 
 ## Task 3 — Filtering for GET /v1/events
-- [ ] Add venue exact-match filter
-- [ ] Add from/to date filters on startsAt (inclusive)
-- [ ] Ensure filtering happens before pagination
-- [ ] Ensure total is the filtered count
-- [ ] Validate from/to as valid dates (400 on malformed)
-- [ ] Return 400 if from > to
+- [x] Add venue exact-match filter
+- [x] Add from/to date filters on startsAt (inclusive)
+- [x] Ensure filtering happens before pagination
+- [x] Ensure total is the filtered count
+- [x] Validate from/to as valid dates (400 on malformed)
+- [x] Return 400 if from > to
 
 ## Task 4 — Consistency Pass
-- [ ] Apply shared `validate` middleware to all body endpoints
-- [ ] Apply `validateQuery` consistently to query endpoints
-- [ ] Use `HttpError` for all endpoint failures
-- [ ] Keep one error middleware registered last
-- [ ] Remove any inappropriate `res.status(500)` outside global error middleware
-- [ ] Confirm no stack traces exposed to clients
-- [ ] Add `/health` endpoint to Express app
-- [ ] Confirm error response shape is consistent: `{ status, message, errors? }`
+- [x] Apply shared `validate` middleware to all body endpoints
+- [x] Apply `validateQuery` consistently to query endpoints
+- [x] Use `HttpError` for all endpoint failures
+- [x] Keep one error middleware registered last
+- [x] Remove any inappropriate `res.status(500)` outside global error middleware
+- [x] Confirm no stack traces exposed to clients
+- [x] Add `/health` endpoint to Express app
+- [x] Confirm error response shape is consistent: `{ status, message, errors? }`
 
 ## Git / PR
-- [ ] Commit plan as first commit on session-2
-- [ ] Make implementation commits with clear messages
-- [ ] Run TypeScript type-check (`npm run build`)
-- [ ] Run the application and verify all acceptance cases
-- [ ] Update completed checklist items
+- [x] Commit plan as first commit on session-2
+- [x] Make implementation commits with clear messages
+- [x] Run TypeScript type-check (`npm run build`) — 0 errors
+- [x] Run the application and verify all acceptance cases (31/31 pass)
+- [x] Update completed checklist items
 - [ ] Prepare PR description with AI section and exit-ticket sentence
