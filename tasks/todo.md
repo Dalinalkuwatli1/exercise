@@ -56,4 +56,4 @@
 - [x] Run TypeScript type-check (`npm run build`) — 0 errors
 - [x] Run the application and verify all acceptance cases (31/31 pass)
 - [x] Update completed checklist items
-- [ ] Prepare PR description with AI section and exit-ticket sentence
+- [x] Prepare PR description with AI section and exit-ticket sentence
