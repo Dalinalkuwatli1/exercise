@@ -1,0 +1,56 @@
+// Eventify — Prisma Schema (v7)
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  ATTENDEE
+  ORGANIZER
+  ADMIN
+}
+
+enum BookingStatus {
+  CONFIRMED
+  CANCELLED
+  WAITLISTED
+}
+
+model User {
+  id        String    @id @default(uuid())
+  name      String
+  email     String    @unique
+  role      Role      @default(ATTENDEE)
+  createdAt DateTime  @default(now())
+  bookings  Booking[]
+}
+
+model Event {
+  id          String    @id @default(uuid())
+  title       String
+  description String
+  venue       String
+  capacity    Int
+  startsAt    DateTime
+  createdAt   DateTime  @default(now())
+  bookings    Booking[]
+}
+
+model Booking {
+  id        String        @id @default(uuid())
+  userId    String
+  eventId   String
+  status    BookingStatus @default(CONFIRMED)
+  createdAt DateTime      @default(now())
+
+  user  User  @relation(fields: [userId], references: [id])
+  event Event @relation(fields: [eventId], references: [id])
+
+  @@unique([userId, eventId])
+  @@index([userId])
+}

@@ -1,0 +1,6 @@
+[33m43ce4cf[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32msession-2[m[33m, [m[1;31morigin/session-2[m[33m)[m Ensure /health and 404 route consistency using centralized error handler
+[33mf61f81e[m Store validated query in res.locals.query; register /health, events, bookings routes; mark todo complete
+[33mfd0c001[m Add event and booking routes
+[33m9211f33[m Add event and booking controllers; fix venue controller to read res.locals.query
+[33mb72af2b[m Add in-memory event and booking services with business rules
+[33me2a2079[m Add Event and Booking domain types with Zod schemas
